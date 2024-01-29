@@ -64,7 +64,8 @@ class App extends Component {
         <h2 className={styles.title}>Contacts</h2>
         <Filter
           filter={filter}
-          setFilter={value => this.setState({ filter: value })}
+          setFilter={(value) => this.setState({ filter: value })}
+
         />
         <ContactList
           contacts={filteredContacts}
