@@ -23,9 +23,23 @@ class App extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if (prevState.contacts !== this.state.contacts) {
+    if (!this.areArraysEqual(prevState.contacts, this.state.contacts)) {
       localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
     }
+  }
+
+  areArraysEqual(arr1, arr2) {
+    if (arr1.length !== arr2.length) {
+      return false;
+    }
+
+    for (let i = 0; i < arr1.length; i++) {
+      if (arr1[i] !== arr2[i]) {
+        return false;
+      }
+    }
+
+    return true;
   }
 
   addContact = contact => {
